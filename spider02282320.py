@@ -95,7 +95,7 @@ def search(driver,i,worksheet,mytxt):
         mail_or_url = driver.find_element_by_xpath("/html/body/div[3]/div[4]/ul/li[3]/span").text
         if(mail_or_url.find(u'邮箱')!=-1 ):
             have_mail=1
-            mails = re.findall(r"[a-zA-Z0-9\.\-+_]+@[a-zA-Z0-9\.\-+_]+\.[a-zA-Z]+", mail_or_url)
+            mails = re.findall(r"[a-zA-Z0-9\.\-+_]+@[a-zA-Z0-9\.\-+_]+[\.]?[a-zA-Z]+", mail_or_url)#有些邮箱不规范，因此这里的'.'是可选项
             print(mails[0])
             worksheet.write(i,3,label=mails[0])
         else:
@@ -119,6 +119,8 @@ def search(driver,i,worksheet,mytxt):
             worksheet.write(i,5,label=mail_or_url.replace('地址：',''))
         else:
             pass
+    except IndexError:
+            worksheet.write(j+1,3,label=(mail_or_url.replace('邮箱：','').replace('。','.')))#有些邮箱不规范,把点写作了句号
     except Exception,e:
         print('4'+str(Exception)+' '+str(e)+' '+repr(e)+' '+e.message)
 
