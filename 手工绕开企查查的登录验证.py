@@ -1,12 +1,16 @@
-#python 2.*
+#默认使用python 2.*，如果使用的是python3.*则需要对两个语句进行替换。
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
 import xlwt
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+reload(sys)                    #if python 2.*
+sys.setdefaultencoding('utf-8')#if python 2.*
+
+#import importlib      #if python 3.*
+#importlib.reload(sys) #if python 3.*
+
 
 #伪装成浏览器，防止被识破
 option = webdriver.ChromeOptions()
