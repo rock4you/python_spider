@@ -2,6 +2,9 @@
 #获取指定城市所有类型的公司信息，每种类型的公司保存为一个excel表格 
 #默认不显示浏览器图形界面
 
+#安装chromedriver、selenium、xlwt
+#如果except 语法报错，请使用python2.7 或修改代码适应python3.*版本
+
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
